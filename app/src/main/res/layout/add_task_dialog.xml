@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/title_task_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/label_title"
+        android:inputType="textCapSentences"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:background="@drawable/task_border"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text" />
+
+    <EditText
+        android:id="@+id/task_description_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="top"
+        android:background="@drawable/task_border"
+        android:padding="10dp"
+        android:hint="@string/label_description"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:textColor="@color/black"
+        android:textColorHint="@color/text" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_gravity="center"
+        android:text="Set Time">
+
+    </TextView>
+
+    <TimePicker
+        android:id="@+id/task_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/task_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
+
+</LinearLayout>

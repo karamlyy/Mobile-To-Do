@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">To-Do</string>
+    <string name="label_title">Task Title</string>
+    <string name="label_description">Task Description</string>
+    <string name="label_add_task_button">Add Task</string>
+
+</resources>

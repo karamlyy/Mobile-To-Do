@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_title">Tapşırıq başlığı</string>
+    <string name="label_description">Tapşırıq təsviri</string>
+    <string name="label_add_task_button">Əlavə et</string>
+</resources>
