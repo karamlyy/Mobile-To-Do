@@ -18,16 +18,6 @@
         android:textSize="30dp">
 
     </TextView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="20dp"
-        android:layout_marginTop="50dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
     <TextView
         android:id="@+id/emptyTasksTextView"
         android:layout_width="wrap_content"
@@ -37,6 +27,16 @@
         android:text="You have no task"
         android:textSize="18sp"
         android:visibility="gone" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp"
+        android:layout_marginTop="50dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
 
     <Button
         android:id="@+id/add_task_button"

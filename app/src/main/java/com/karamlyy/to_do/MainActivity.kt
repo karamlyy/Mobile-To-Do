@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         loadTasks()
+        updateEmptyTasksVisibility()
 
         taskAdapter = TaskAdapter(tasks,
             { task ->
@@ -56,7 +57,8 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("Add") { _, _ ->
                 val taskTitle = dialogBinding.titleTaskInput.text.toString()
                 val taskDescription = dialogBinding.taskDescriptionInput.text.toString()
-                val taskTime = "${dialogBinding.taskTimePicker.hour}:${dialogBinding.taskTimePicker.minute}"
+                val formattedMinute = String.format("%02d", dialogBinding.taskTimePicker.minute)
+                val taskTime = "${dialogBinding.taskTimePicker.hour}:$formattedMinute"
 
                 if (taskTitle.isNotEmpty()) {
                     val newTask = Task(tasks.size + 1, taskTitle, taskDescription, taskTime)
