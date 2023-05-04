@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karamlyy.to_do.databinding.ActivityMainBinding
 import com.karamlyy.to_do.databinding.AddTaskDialogBinding
-
-
+import android.content.Context
+import android.content.SharedPreferences
+import android.view.View
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -19,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        loadTasks()
 
         taskAdapter = TaskAdapter(tasks,
             { task ->
@@ -32,6 +37,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.addTaskButton.setOnClickListener {
             showAddTaskDialog()
+        }
+    }
+    private fun updateEmptyTasksVisibility() {
+        if (tasks.isEmpty()) {
+            binding.emptyTasksTextView.visibility = View.VISIBLE
+        } else {
+            binding.emptyTasksTextView.visibility = View.GONE
         }
     }
 
@@ -51,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                     tasks.add(newTask)
                     taskAdapter.notifyItemInserted(tasks.size - 1)
                     Toast.makeText(this, "Task added!", Toast.LENGTH_SHORT).show()
+                    updateEmptyTasksVisibility()
 
                 } else {
                     Toast.makeText(this, "Task title cannot be empty!", Toast.LENGTH_SHORT).show()
@@ -89,9 +102,39 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton("Cancel", null)
             .show()
     }
+    private fun getSharedPreferences(): SharedPreferences {
+        return getSharedPreferences("com.karamlyy.to_do.Tasks", Context.MODE_PRIVATE)
+    }
+
+    private fun saveTasks() {
+        val sharedPreferences = getSharedPreferences()
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        val tasksJson = gson.toJson(tasks)
+        editor.putString("tasks", tasksJson)
+        editor.apply()
+    }
+
+    private fun loadTasks() {
+        val sharedPreferences = getSharedPreferences()
+        val gson = Gson()
+        val tasksJson = sharedPreferences.getString("tasks", null)
+
+        if (tasksJson != null) {
+            val type = object : TypeToken<List<Task>>() {}.type
+            tasks.clear()
+            tasks.addAll(gson.fromJson(tasksJson, type))
+        }
+    }
 
     private fun deleteTask(task: Task) {
         tasks.remove(task)
         taskAdapter.notifyDataSetChanged()
+        updateEmptyTasksVisibility()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        saveTasks()
     }
 }
