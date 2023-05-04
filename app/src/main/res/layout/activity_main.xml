@@ -1,55 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/border_fullscreen"
-    tools:context=".MainActivity">
+    android:background="@drawable/border"
+    >
 
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="To Do App"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:fontFamily=""
-        android:textSize="30dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border_fullscreen"
+        tools:context=".MainActivity">
 
-    </TextView>
-    <TextView
-        android:id="@+id/emptyTasksTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/label_no_task"
-        android:textSize="18sp"
-        android:visibility="gone" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="To Do App"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily=""
+            android:textSize="30dp">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="20dp"
-        android:background="@drawable/border"
-        android:padding="20dp"
-        android:layout_marginTop="50dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </TextView>
+        <TextView
+            android:id="@+id/emptyTasksTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/label_no_task"
+            android:textSize="18sp"
+            android:visibility="gone" />
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:background="@drawable/border"
+            android:padding="20dp"
+            android:layout_marginTop="50dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-    <Button
-        android:id="@+id/add_task_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="@string/label_add_task_button" />
-</LinearLayout>
 
+
+        <Button
+            android:id="@+id/add_task_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:text="@string/label_add_task_button" />
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

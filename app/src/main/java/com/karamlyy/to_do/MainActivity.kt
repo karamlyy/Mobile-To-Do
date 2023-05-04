@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.karamlyy.to_do.databinding.ActivityMainBinding
@@ -129,11 +130,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun deleteTask(task: Task) {
+        val position = tasks.indexOf(task)
         tasks.remove(task)
-        taskAdapter.notifyDataSetChanged()
+        taskAdapter.notifyItemRemoved(position)
         updateEmptyTasksVisibility()
 
-
+        val snackbar = Snackbar.make(binding.coordinatorLayout, "Task deleted", Snackbar.LENGTH_LONG)
+        snackbar.setAction("Undo") {
+            tasks.add(position, task)
+            taskAdapter.notifyItemInserted(position)
+            updateEmptyTasksVisibility()
+        }
+        snackbar.addCallback(object : Snackbar.Callback() {
+            override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                if (event != DISMISS_EVENT_ACTION) {
+                    // The Snackbar was dismissed without pressing the action button
+                    // Remove the task from the list permanently
+                    saveTasks()
+                }
+            }
+        })
+        snackbar.show()
     }
 
     override fun onStop() {
