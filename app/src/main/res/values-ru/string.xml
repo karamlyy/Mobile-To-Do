@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_title">Название задачи</string>
+    <string name="label_description">Описание задания</string>
+    <string name="label_add_task_button">добавить задачу</string>
+    <string name="label_no_task">У вас нет задачи</string>
+
+</resources>

@@ -1,17 +1,16 @@
 package com.karamlyy.to_do
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.karamlyy.to_do.databinding.ActivityMainBinding
-import com.karamlyy.to_do.databinding.AddTaskDialogBinding
-import android.content.Context
-import android.content.SharedPreferences
-import android.view.View
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.karamlyy.to_do.databinding.ActivityMainBinding
+import com.karamlyy.to_do.databinding.AddTaskDialogBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -105,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
     private fun getSharedPreferences(): SharedPreferences {
-        return getSharedPreferences("com.karamlyy.to_do.Tasks", Context.MODE_PRIVATE)
+        return getSharedPreferences("com.karamlyy.to_do.Tasks", MODE_PRIVATE)
     }
 
     private fun saveTasks() {
@@ -133,6 +132,8 @@ class MainActivity : AppCompatActivity() {
         tasks.remove(task)
         taskAdapter.notifyDataSetChanged()
         updateEmptyTasksVisibility()
+
+
     }
 
     override fun onStop() {
@@ -140,3 +141,5 @@ class MainActivity : AppCompatActivity() {
         saveTasks()
     }
 }
+
+

@@ -3,4 +3,6 @@
     <string name="label_title">Tapşırıq başlığı</string>
     <string name="label_description">Tapşırıq təsviri</string>
     <string name="label_add_task_button">Əlavə et</string>
+    <string name="label_no_task">Tapşırığınız yoxdur</string>
+
 </resources>
