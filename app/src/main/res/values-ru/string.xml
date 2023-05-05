@@ -4,5 +4,16 @@
     <string name="label_description">Описание задания</string>
     <string name="label_add_task_button">добавить задачу</string>
     <string name="label_no_task">У вас нет задачи</string>
+    <string name="label_setTime">Установить время</string>
+    <string name="label_do_it_till">Сделайте это до</string>
+    <string name="label_task_added_toast">Задача добавлена</string>
+    <string name="label_task_is_empty">Название задачи не может быть пустым</string>
+    <string name="label_cancel">Отмена</string>
+    <string name="label_edit_task">Редактировать задачу</string>
+    <string name="label_update">Обновлятьe</string>
+    <string name="label_task_updated">Обновлено задание!</string>
+    <string name="label_task_deleted">Задача удалена!</string>
+    <string name="label_undo">Отменить</string>
+    <string name="label_add">Добавлять</string>
 
 </resources>

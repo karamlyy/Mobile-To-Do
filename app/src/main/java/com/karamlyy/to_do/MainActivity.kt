@@ -1,9 +1,11 @@
 package com.karamlyy.to_do
 
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,12 +14,15 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.karamlyy.to_do.databinding.ActivityMainBinding
 import com.karamlyy.to_do.databinding.AddTaskDialogBinding
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val tasks = mutableListOf<Task>()
     private lateinit var taskAdapter: TaskAdapter
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -40,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             showAddTaskDialog()
         }
     }
+
     private fun updateEmptyTasksVisibility() {
         if (tasks.isEmpty()) {
             binding.emptyTasksTextView.visibility = View.VISIBLE
@@ -48,30 +54,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun showAddTaskDialog() {
         val dialogBinding = AddTaskDialogBinding.inflate(layoutInflater)
 
         AlertDialog.Builder(this)
             .setView(dialogBinding.root)
-            .setTitle("Add Task")
-            .setPositiveButton("Add") { _, _ ->
+            .setTitle("${getString(R.string.label_add_task_button)}")
+            .setPositiveButton("${getString(R.string.label_add)}") { _, _ ->
                 val taskTitle = dialogBinding.titleTaskInput.text.toString()
                 val taskDescription = dialogBinding.taskDescriptionInput.text.toString()
-                val formattedMinute = String.format("%02d", dialogBinding.taskTimePicker.minute)
-                val taskTime = "${dialogBinding.taskTimePicker.hour}:$formattedMinute"
+
 
                 if (taskTitle.isNotEmpty()) {
-                    val newTask = Task(tasks.size + 1, taskTitle, taskDescription, taskTime)
+                    val currentDateTime = LocalDateTime.now()
+                    val addedTime = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy"))
+
+                    val newTask = Task(tasks.size + 1, taskTitle, taskDescription, addedTime)
                     tasks.add(newTask)
                     taskAdapter.notifyItemInserted(tasks.size - 1)
-                    Toast.makeText(this, "Task added!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${getString(R.string.label_task_added_toast)}", Toast.LENGTH_SHORT).show()
                     updateEmptyTasksVisibility()
 
                 } else {
-                    Toast.makeText(this, "Task title cannot be empty!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${getString(R.string.label_task_is_empty)}", Toast.LENGTH_SHORT).show()
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton("${getString(R.string.label_cancel)}", null)
             .show()
     }
 
@@ -79,29 +88,27 @@ class MainActivity : AppCompatActivity() {
         val dialogBinding = AddTaskDialogBinding.inflate(layoutInflater)
         dialogBinding.titleTaskInput.setText(task.title)
         dialogBinding.taskDescriptionInput.setText(task.description)
-        dialogBinding.taskTimePicker.hour = task.time.split(":")[0].toInt()
-        dialogBinding.taskTimePicker.minute = task.time.split(":")[1].toInt()
+
 
         AlertDialog.Builder(this)
             .setView(dialogBinding.root)
-            .setTitle("Edit Task")
-            .setPositiveButton("Update") { _, _ ->
+            .setTitle("${getString(R.string.label_edit_task)}")
+            .setPositiveButton("${getString(R.string.label_update)}") { _, _ ->
                 val taskTitle = dialogBinding.titleTaskInput.text.toString()
                 val taskDescription = dialogBinding.taskDescriptionInput.text.toString()
-                val taskTime = "${dialogBinding.taskTimePicker.hour}:${dialogBinding.taskTimePicker.minute}"
 
                 if (taskTitle.isNotEmpty()) {
                     task.title = taskTitle
                     task.description = taskDescription
-                    task.time = taskTime
+
                     taskAdapter.notifyDataSetChanged()
-                    Toast.makeText(this, "Task updated!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${getString(R.string.label_task_updated)}", Toast.LENGTH_SHORT).show()
 
                 } else {
-                    Toast.makeText(this, "Task title cannot be empty!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${getString(R.string.label_task_is_empty)}", Toast.LENGTH_SHORT).show()
                 }
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton("${getString(R.string.label_cancel)}", null)
             .show()
     }
     private fun getSharedPreferences(): SharedPreferences {
@@ -135,8 +142,8 @@ class MainActivity : AppCompatActivity() {
         taskAdapter.notifyItemRemoved(position)
         updateEmptyTasksVisibility()
 
-        val snackbar = Snackbar.make(binding.coordinatorLayout, "Task deleted", Snackbar.LENGTH_LONG)
-        snackbar.setAction("Undo") {
+        val snackbar = Snackbar.make(binding.coordinatorLayout, "${getString(R.string.label_task_deleted)}", Snackbar.LENGTH_SHORT)
+        snackbar.setAction("${getString(R.string.label_undo)}") {
             tasks.add(position, task)
             taskAdapter.notifyItemInserted(position)
             updateEmptyTasksVisibility()

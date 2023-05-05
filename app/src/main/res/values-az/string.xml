@@ -4,5 +4,16 @@
     <string name="label_description">Tapşırıq təsviri</string>
     <string name="label_add_task_button">Əlavə et</string>
     <string name="label_no_task">Tapşırığınız yoxdur</string>
+    <string name="label_setTime">Vaxt seçin</string>
+    <string name="label_do_it_till">Bunu et</string>
+    <string name="label_task_added_toast">Tapşırıq əlavə edildi</string>
+    <string name="label_task_is_empty">Tapşırıq başlığı boş olmamalıdır!</string>
+    <string name="label_cancel">Ləğv edin</string>
+    <string name="label_edit_task">Redaktə et</string>
+    <string name="label_update">Yenilə</string>
+    <string name="label_task_updated">Tapşırıq yeniləndi!</string>
+    <string name="label_task_deleted">Tapşırıq silindi!</string>
+    <string name="label_undo">Geri al</string>
+    <string name="label_add">Əlavə et</string>
 
 </resources>

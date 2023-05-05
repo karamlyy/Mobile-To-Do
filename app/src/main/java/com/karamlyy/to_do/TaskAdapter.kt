@@ -33,16 +33,17 @@ class TaskAdapter(
         private val description: TextView = itemView.findViewById(R.id.task_description)
         private val editIcon: ImageView = itemView.findViewById(R.id.edit_task_icon)
         private val deleteIcon: ImageView = itemView.findViewById(R.id.delete_task_icon)
-        private val time: TextView = itemView.findViewById(R.id.task_time)
+        private val addedTime: TextView = itemView.findViewById(R.id.addedTime)
 
         fun bind(task: Task) {
             title.text = task.title
             description.text = task.description
 
+            addedTime.text = task.addedTime
+
             editIcon.setOnClickListener {
                 onEditTaskClick(task)
             }
-            time.text = task.time
             deleteIcon.setOnClickListener {
                 onDeleteTaskClick(task)
             }

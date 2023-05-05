@@ -33,26 +33,4 @@
         android:textColor="@color/black"
         android:textColorHint="@color/text" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_gravity="center"
-        android:text="Set Time">
-
-    </TextView>
-
-    <TimePicker
-        android:id="@+id/task_time_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:timePickerMode="spinner"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/task_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
-
 </LinearLayout>
