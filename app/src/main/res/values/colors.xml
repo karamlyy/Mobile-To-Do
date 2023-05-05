@@ -2,10 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#FFFDE1</color>
+    <color name="background">#FBF1B0</color>
     <color name="text">#1B2983</color>
     <color name="buttonColor">#B8B8FF</color>
-    <color name="edit">#9381FF</color>
+    <color name="edit">#B2A5FF</color>
     <color name="delete">#EC4D4D</color>
 
 </resources>
