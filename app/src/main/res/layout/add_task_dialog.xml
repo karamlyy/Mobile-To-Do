@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     android:padding="16dp">
 
     <EditText
@@ -32,5 +33,39 @@
         android:lines="4"
         android:textColor="@color/black"
         android:textColorHint="@color/text" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:padding="5dp"
+
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_important_task"
+            android:layout_marginTop="11dp"
+            android:textColor="@color/text"
+
+            android:textSize="17dp"/>
+
+        <CheckBox
+            android:id="@+id/importantCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
+
+
+
 
 </LinearLayout>

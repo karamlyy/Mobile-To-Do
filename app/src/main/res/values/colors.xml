@@ -7,5 +7,7 @@
     <color name="buttonColor">#B8B8FF</color>
     <color name="edit">#B2A5FF</color>
     <color name="delete">#EC4D4D</color>
+    <color name="importantNote">#FFBF9C</color>
+    <color name="notImportantNote">#FBF1B0</color>
 
 </resources>

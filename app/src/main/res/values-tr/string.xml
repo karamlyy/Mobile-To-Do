@@ -14,6 +14,7 @@
     <string name="label_task_deleted">Not Silindi!</string>
     <string name="label_undo">Geri al</string>
     <string name="label_add">Ekle</string>
-
+    <string name="label_important_task">Önemli olarak işaretle: </string>
+    <string name="label_important">Önemli Not</string>
 
 </resources>

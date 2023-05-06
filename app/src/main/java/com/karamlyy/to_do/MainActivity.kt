@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -64,20 +66,30 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("${getString(R.string.label_add)}") { _, _ ->
                 val taskTitle = dialogBinding.titleTaskInput.text.toString()
                 val taskDescription = dialogBinding.taskDescriptionInput.text.toString()
-
+                val isImportant = dialogBinding.importantCheckBox.isChecked
 
                 if (taskTitle.isNotEmpty()) {
                     val currentDateTime = LocalDateTime.now()
-                    val addedTime = currentDateTime.format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy"))
+                    val addedTime =
+                        currentDateTime.format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy     HH:mm"))
 
-                    val newTask = Task(tasks.size + 1, taskTitle, taskDescription, addedTime)
+                    val newTask =
+                        Task(tasks.size + 1, taskTitle, taskDescription, addedTime, isImportant)
                     tasks.add(newTask)
                     taskAdapter.notifyItemInserted(tasks.size - 1)
-                    Toast.makeText(this, "${getString(R.string.label_task_added_toast)}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "${getString(R.string.label_task_added_toast)}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateEmptyTasksVisibility()
 
                 } else {
-                    Toast.makeText(this, "${getString(R.string.label_task_is_empty)}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "${getString(R.string.label_task_is_empty)}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
             .setNegativeButton("${getString(R.string.label_cancel)}", null)
@@ -88,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         val dialogBinding = AddTaskDialogBinding.inflate(layoutInflater)
         dialogBinding.titleTaskInput.setText(task.title)
         dialogBinding.taskDescriptionInput.setText(task.description)
-
+        dialogBinding.importantCheckBox.isChecked = task.isImportant
 
         AlertDialog.Builder(this)
             .setView(dialogBinding.root)
@@ -96,21 +108,33 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("${getString(R.string.label_update)}") { _, _ ->
                 val taskTitle = dialogBinding.titleTaskInput.text.toString()
                 val taskDescription = dialogBinding.taskDescriptionInput.text.toString()
+                val isImportant = dialogBinding.importantCheckBox.isChecked
 
                 if (taskTitle.isNotEmpty()) {
                     task.title = taskTitle
                     task.description = taskDescription
 
+                    task.isImportant = isImportant
+
                     taskAdapter.notifyDataSetChanged()
-                    Toast.makeText(this, "${getString(R.string.label_task_updated)}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "${getString(R.string.label_task_updated)}",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                 } else {
-                    Toast.makeText(this, "${getString(R.string.label_task_is_empty)}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "${getString(R.string.label_task_is_empty)}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
             .setNegativeButton("${getString(R.string.label_cancel)}", null)
             .show()
     }
+
     private fun getSharedPreferences(): SharedPreferences {
         return getSharedPreferences("com.karamlyy.to_do.Tasks", MODE_PRIVATE)
     }
@@ -142,7 +166,11 @@ class MainActivity : AppCompatActivity() {
         taskAdapter.notifyItemRemoved(position)
         updateEmptyTasksVisibility()
 
-        val snackbar = Snackbar.make(binding.coordinatorLayout, "${getString(R.string.label_task_deleted)}", Snackbar.LENGTH_SHORT)
+        val snackbar = Snackbar.make(
+            binding.coordinatorLayout,
+            "${getString(R.string.label_task_deleted)}",
+            Snackbar.LENGTH_SHORT
+        )
         snackbar.setAction("${getString(R.string.label_undo)}") {
             tasks.add(position, task)
             taskAdapter.notifyItemInserted(position)

@@ -16,5 +16,7 @@
     <string name="label_task_deleted">Qeyd Silindi!</string>
     <string name="label_undo">Geri al</string>
     <string name="label_add">Əlavə et</string>
+    <string name="label_important_task">Vacib olaraq qeyd edin: </string>
+    <string name="label_important">Vacib Qeyd</string>
 
 </resources>
