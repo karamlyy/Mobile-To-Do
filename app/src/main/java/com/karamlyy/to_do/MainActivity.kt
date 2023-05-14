@@ -94,9 +94,6 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     updateEmptyTasksVisibility()
 
-                    // Reset selectedImageUri
-                    selectedImageUri = null
-
                 } else {
                     Toast.makeText(
                         this,
@@ -104,7 +101,9 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                selectedImageUri = null // Reset the selectedImageUri
             }
+
             .setNegativeButton("${getString(R.string.label_cancel)}", null)
             .show()
     }
@@ -114,13 +113,18 @@ class MainActivity : AppCompatActivity() {
         dialogBinding.titleTaskInput.setText(task.title)
         dialogBinding.taskDescriptionInput.setText(task.description)
         dialogBinding.importantCheckBox.isChecked = task.isImportant
-
-        // Set selectedImageUri to the current task's image if it exists
-        selectedImageUri = if (task.imageUri != null) Uri.parse(task.imageUri) else null
+        selectedImageUri = if (task.imageUri != null) Uri.parse(task.imageUri) else null // Add this line
 
         dialogBinding.selectImageButton.setOnClickListener {
             selectImageFromGallery()
         }
+
+        dialogBinding.removeImageButton.setOnClickListener {
+            selectedImageUri = null
+            task.imageUri = null
+            taskAdapter.notifyDataSetChanged() // Notify the adapter about the change
+        }
+
         AlertDialog.Builder(this)
             .setView(dialogBinding.root)
             .setTitle("${getString(R.string.label_edit_task)}")
@@ -132,19 +136,15 @@ class MainActivity : AppCompatActivity() {
                 if (taskTitle.isNotEmpty()) {
                     task.title = taskTitle
                     task.description = taskDescription
-
                     task.isImportant = isImportant
                     task.imageUri = selectedImageUri?.toString()
 
-                    taskAdapter.notifyDataSetChanged()
+                    taskAdapter.notifyDataSetChanged() // Notify the adapter about the change
                     Toast.makeText(
                         this,
                         "${getString(R.string.label_task_updated)}",
                         Toast.LENGTH_SHORT
                     ).show()
-
-                    // Reset selectedImageUri
-                    selectedImageUri = null
 
                 } else {
                     Toast.makeText(
@@ -157,6 +157,7 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton("${getString(R.string.label_cancel)}", null)
             .show()
     }
+
 
     private fun selectImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
