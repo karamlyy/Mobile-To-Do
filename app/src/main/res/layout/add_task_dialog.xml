@@ -33,26 +33,48 @@
         android:textColor="@color/black"
         android:textColorHint="@color/text" />
 
+    <ImageView
+        android:id="@+id/task_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
 
-    <TextView
+        android:background="@drawable/task_border" />
+
+    <Button
+        android:id="@+id/select_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_gravity="center"
-        android:text="Set Time">
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/label_select_image" />
 
-    </TextView>
-
-    <TimePicker
-        android:id="@+id/task_time_picker"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:timePickerMode="spinner"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/task_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_input" />
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:gravity="right"
+        android:padding="5dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_important_task"
+            android:layout_marginTop="11dp"
+            android:textColor="@color/text"
+            android:textSize="17dp"/>
+
+        <CheckBox
+            android:id="@+id/importantCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textSize="20dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

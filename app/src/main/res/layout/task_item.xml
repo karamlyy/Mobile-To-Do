@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
@@ -10,10 +12,12 @@
     <TextView
         android:id="@+id/task_title"
         android:layout_width="0dp"
-        android:fontFamily="sans-serif-condensed-light"
+        android:fontFamily="monospace"
         android:textSize="20dp"
         android:layout_height="wrap_content"
         android:text="@string/label_title"
+        android:paddingRight="15dp"
+
         app:layout_constraintEnd_toStartOf="@+id/edit_task_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,17 +27,21 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/label_description"
+        android:paddingRight="15dp"
         app:layout_constraintEnd_toStartOf="@+id/edit_task_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
     <TextView
-        android:id="@+id/task_time"
+        android:id="@+id/addedTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:00"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="2dp"
+        android:text="created time"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_description" />
 
@@ -41,10 +49,9 @@
         android:id="@+id/edit_task_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="2dp"
         android:src="@drawable/baseline_edit_24"
-        app:layout_constraintEnd_toStartOf="@+id/delete_task_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -52,12 +59,29 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
 
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="2dp"
         android:src="@drawable/baseline_delete_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_task_icon" />
 
 
+    <TextView
+        android:id="@+id/importantTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_description" />
+
+    <ImageView
+        android:id="@+id/task_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/importantTask"
+        android:scaleType="centerCrop"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

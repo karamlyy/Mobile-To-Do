@@ -4,5 +4,8 @@ data class Task(
     val id: Int,
     var title: String,
     var description: String,
-    var time: String
+    val addedTime: String,
+    var isImportant: Boolean = false,
+    var imageUri: String? = null
+
 )

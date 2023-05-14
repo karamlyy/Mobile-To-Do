@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label_title">Tapşırıq başlığı</string>
-    <string name="label_description">Tapşırıq təsviri</string>
+    <string name="label_title">Qeyd başlığı</string>
+    <string name="label_main_title">Qeydləriniz</string>
+
+    <string name="label_description">Qeyd təsviri</string>
     <string name="label_add_task_button">Əlavə et</string>
-    <string name="label_no_task">Tapşırığınız yoxdur</string>
+    <string name="label_no_task">Qeydiniz yoxdur</string>
+
+    <string name="label_task_added_toast">Qeyd əlavə edildi</string>
+    <string name="label_task_is_empty">Qeyd başlığı boş olmamalıdır!</string>
+    <string name="label_cancel">Ləğv edin</string>
+    <string name="label_edit_task">Redaktə et</string>
+    <string name="label_update">Yenilə</string>
+    <string name="label_task_updated">Qeyd Yeniləndi!</string>
+    <string name="label_task_deleted">Qeyd Silindi!</string>
+    <string name="label_undo">Geri al</string>
+    <string name="label_add">Əlavə et</string>
+    <string name="label_important_task">Vacib olaraq qeyd edin: </string>
+    <string name="label_important">Vacib Qeyd</string>
 
 </resources>

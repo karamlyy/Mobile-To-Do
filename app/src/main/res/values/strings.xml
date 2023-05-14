@@ -1,8 +1,22 @@
 <resources>
-    <string name="app_name">To-Do</string>
-    <string name="label_title">Task Title</string>
-    <string name="label_description">Task Description</string>
-    <string name="label_add_task_button">Add Task</string>
-    <string name="label_no_task">You have no task</string>
+    <string name="app_name" translatable="false">Notes</string>
+    <string name="label_main_title">Your Notes</string>
+    <string name="label_title">Note title</string>
+    <string name="label_description">Note description</string>
+    <string name="label_select_image">Select Image</string>
+
+    <string name="label_add_task_button">Add note</string>
+    <string name="label_no_task">You have no note</string>
+    <string name="label_task_added_toast">Note added</string>
+    <string name="label_task_is_empty">Note title cannot be empty!</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_edit_task">Edit note</string>
+    <string name="label_update">Update</string>
+    <string name="label_task_updated">Note Updated!</string>
+    <string name="label_task_deleted">Note Deleted!</string>
+    <string name="label_undo">Undo</string>
+    <string name="label_add">Add</string>
+    <string name="label_important_task">Mark as important: </string>
+    <string name="label_important">Important Note</string>
 
 </resources>

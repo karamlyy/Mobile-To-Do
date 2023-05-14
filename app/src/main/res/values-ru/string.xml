@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="label_main_title">Ваши заметки</string>
     <string name="label_title">Название задачи</string>
-    <string name="label_description">Описание задания</string>
-    <string name="label_add_task_button">добавить задачу</string>
+    <string name="label_description">Примечание Описание</string>
+    <string name="label_add_task_button">Добавить заметку</string>
     <string name="label_no_task">У вас нет задачи</string>
+    <string name="label_task_added_toast">Заметка добавлено</string>
+    <string name="label_task_is_empty">Заголовок заметки не может быть пустым!    <string name="label_important_task">Mark as important: </string>
+</string>
+    <string name="label_cancel">Отмена</string>
+    <string name="label_edit_task">Изменить заметку</string>
+    <string name="label_update">Обновлятьe</string>
+    <string name="label_task_updated">Заметка обновлено!</string>
+    <string name="label_task_deleted">Заметка удалена!</string>
+    <string name="label_undo">Отменить</string>
+    <string name="label_add">Добавлять</string>
+    <string name="label_important_task">Отметить как важное: </string>
+    <string name="label_important">Важная заметка</string>
 
 </resources>

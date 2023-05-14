@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label_title">Görev başlığı</string>
-    <string name="label_description">Görev tanımı</string>
-    <string name="label_add_task_button">Görev ekle</string>
-    <string name="label_no_task">Görevin yok</string>
+    <string name="label_title">Not başlığı</string>
+    <string name="label_main_title">Notlarınız</string>
+    <string name="label_description">Not tanımı</string>
+    <string name="label_add_task_button">Not Ekle</string>
+    <string name="label_no_task">Notunuz yok</string>
+    <string name="label_task_added_toast">Not eklendi</string>
+    <string name="label_task_is_empty">Not başlığı boş geçilemez!</string>
+    <string name="label_cancel">Iptal</string>
+    <string name="label_edit_task">Notu düzenle</string>
+    <string name="label_update">Güncelle</string>
+    <string name="label_task_updated">Not Güncellendi!</string>
+    <string name="label_task_deleted">Not Silindi!</string>
+    <string name="label_undo">Geri al</string>
+    <string name="label_add">Ekle</string>
+    <string name="label_important_task">Önemli olarak işaretle: </string>
+    <string name="label_important">Önemli Not</string>
 
 </resources>

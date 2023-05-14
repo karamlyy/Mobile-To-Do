@@ -5,8 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/border"
-    >
+    android:background="@drawable/border">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,13 +17,14 @@
         tools:context=".MainActivity">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="To Do App"
+
+            android:text="@string/label_main_title"
             android:layout_gravity="center"
             android:gravity="center"
-            android:fontFamily=""
+            android:padding="10dp"
             android:textSize="30dp">
 
         </TextView>
@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
+            android:textSize="20dp"
             android:text="@string/label_add_task_button" />
     </LinearLayout>
 
