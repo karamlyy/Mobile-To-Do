@@ -1,16 +1,17 @@
 package com.karamlyy.to_do
 
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val tasks = mutableListOf<Task>()
     private lateinit var taskAdapter: TaskAdapter
+    private var selectedImageUri: Uri? = null
+
+    companion object {
+        private const val IMAGE_REQUEST_CODE = 100
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,10 +62,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showAddTaskDialog() {
         val dialogBinding = AddTaskDialogBinding.inflate(layoutInflater)
 
+        dialogBinding.selectImageButton.setOnClickListener {
+            selectImageFromGallery()
+        }
         AlertDialog.Builder(this)
             .setView(dialogBinding.root)
             .setTitle("${getString(R.string.label_add_task_button)}")
@@ -71,10 +81,10 @@ class MainActivity : AppCompatActivity() {
                 if (taskTitle.isNotEmpty()) {
                     val currentDateTime = LocalDateTime.now()
                     val addedTime =
-                        currentDateTime.format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy     HH:mm"))
+                        currentDateTime.format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy  HH:mm"))
 
-                    val newTask =
-                        Task(tasks.size + 1, taskTitle, taskDescription, addedTime, isImportant)
+                    val newTask = Task(tasks.size + 1, taskTitle, taskDescription, addedTime, isImportant, selectedImageUri?.toString())
+
                     tasks.add(newTask)
                     taskAdapter.notifyItemInserted(tasks.size - 1)
                     Toast.makeText(
@@ -83,6 +93,9 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     updateEmptyTasksVisibility()
+
+                    // Reset selectedImageUri
+                    selectedImageUri = null
 
                 } else {
                     Toast.makeText(
@@ -102,6 +115,12 @@ class MainActivity : AppCompatActivity() {
         dialogBinding.taskDescriptionInput.setText(task.description)
         dialogBinding.importantCheckBox.isChecked = task.isImportant
 
+        // Set selectedImageUri to the current task's image if it exists
+        selectedImageUri = if (task.imageUri != null) Uri.parse(task.imageUri) else null
+
+        dialogBinding.selectImageButton.setOnClickListener {
+            selectImageFromGallery()
+        }
         AlertDialog.Builder(this)
             .setView(dialogBinding.root)
             .setTitle("${getString(R.string.label_edit_task)}")
@@ -115,6 +134,7 @@ class MainActivity : AppCompatActivity() {
                     task.description = taskDescription
 
                     task.isImportant = isImportant
+                    task.imageUri = selectedImageUri?.toString()
 
                     taskAdapter.notifyDataSetChanged()
                     Toast.makeText(
@@ -122,6 +142,9 @@ class MainActivity : AppCompatActivity() {
                         "${getString(R.string.label_task_updated)}",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    // Reset selectedImageUri
+                    selectedImageUri = null
 
                 } else {
                     Toast.makeText(
@@ -135,6 +158,18 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    private fun selectImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, IMAGE_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            selectedImageUri = data.data
+            // Handle the image URI as needed
+        }
+    }
     private fun getSharedPreferences(): SharedPreferences {
         return getSharedPreferences("com.karamlyy.to_do.Tasks", MODE_PRIVATE)
     }

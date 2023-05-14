@@ -65,6 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_task_icon" />
 
+
     <TextView
         android:id="@+id/importantTask"
         android:layout_width="wrap_content"
@@ -74,6 +75,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/task_description" />
 
-
+    <ImageView
+        android:id="@+id/task_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/importantTask"
+        android:scaleType="centerCrop"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

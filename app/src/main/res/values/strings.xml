@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name" translatable="false">To-Do</string>
+    <string name="app_name" translatable="false">Notes</string>
     <string name="label_main_title">Your Notes</string>
     <string name="label_title">Note title</string>
     <string name="label_description">Note description</string>
+    <string name="label_select_image">Select Image</string>
+
     <string name="label_add_task_button">Add note</string>
     <string name="label_no_task">You have no note</string>
     <string name="label_task_added_toast">Note added</string>
