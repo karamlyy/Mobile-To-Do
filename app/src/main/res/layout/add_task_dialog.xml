@@ -33,14 +33,14 @@
         android:textColor="@color/black"
         android:textColorHint="@color/text" />
 
-    <ImageView
-        android:id="@+id/task_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
+<!--    <ImageView-->
+<!--        android:id="@+id/task_image"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:scaleType="centerCrop"-->
 
-        android:background="@drawable/task_border" />
+<!--        android:background="@drawable/task_border" />-->
 
     <Button
         android:id="@+id/select_image_button"
