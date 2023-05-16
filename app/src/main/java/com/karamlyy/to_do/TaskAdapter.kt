@@ -55,7 +55,7 @@ class TaskAdapter(
             }
             if (task.isImportant) {
                 itemView.background = ContextCompat.getDrawable(itemView.context, R.drawable.important_note_background)
-                isImportant.text = itemView.context.getString(R.string.label_important)
+//                isImportant.text = itemView.context.getString(R.string.label_important)
             } else {
                 itemView.background = ContextCompat.getDrawable(itemView.context, R.drawable.ordinary_task_background)
                 isImportant.setText("")
