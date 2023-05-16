@@ -6,6 +6,7 @@ data class Task(
     var description: String,
     val addedTime: String,
     var isImportant: Boolean = false,
-    var imageUri: String? = null
+    var imageUri: String? = null,
+    var isDeleted: Boolean = false // Add this line
 
 )

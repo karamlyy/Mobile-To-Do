@@ -1,89 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/title_task_input"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title_task_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/label_title"
-        android:inputType="textCapSentences"
-        android:maxLines="1"
-        android:padding="10dp"
-        android:background="@drawable/task_border"
-        android:textColor="@color/black"
-        android:textColorHint="@color/text" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/task_description_input"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title_task_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/label_title"
+            android:inputType="textCapSentences"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/task_description_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="top"
-        android:background="@drawable/task_border"
-        android:padding="10dp"
-        android:hint="@string/label_description"
-        android:inputType="textMultiLine"
-        android:lines="4"
-        android:textColor="@color/black"
-        android:textColorHint="@color/text" />
+        app:layout_constraintTop_toBottomOf="@+id/title_task_input_layout">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/task_image"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:scaleType="centerCrop"-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/task_description_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="@string/label_description"
+            android:inputType="textMultiLine"
+            android:lines="4" />
 
-<!--        android:background="@drawable/task_border" />-->
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/select_image_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/label_select_image" />
+        android:text="@string/label_select_image"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_input_layout"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/removeImageButton"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_gravity="center_horizontal"
-        android:text="Remove Image" />
+        android:text="Remove Image"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_input_layout"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/importantCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="right"
-        android:gravity="right"
-        android:padding="5dp"
-        android:layout_marginTop="10dp">
+        android:text="@string/label_important_task"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/select_image_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_important_task"
-            android:layout_marginTop="11dp"
-            android:textColor="@color/text"
-            android:textSize="17dp"/>
-
-        <CheckBox
-            android:id="@+id/importantCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:textSize="20dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
