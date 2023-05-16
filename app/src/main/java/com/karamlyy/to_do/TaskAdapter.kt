@@ -16,8 +16,6 @@ class TaskAdapter(
     private val tasks: List<Task>,
     private val onEditTaskClick: (Task) -> Unit,
     private val onDeleteTaskClick: (Task) -> Unit
-
-
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -47,10 +45,13 @@ class TaskAdapter(
             title.text = task.title
             description.text = task.description
             addedTime.text = task.addedTime
-            task.imageUri?.let { uri ->
+            if (task.imageUri != null) {
                 Glide.with(itemView)
-                    .load(Uri.parse(uri))
+                    .load(Uri.parse(task.imageUri))
                     .into(image)
+                image.visibility = View.VISIBLE
+            } else {
+                image.visibility = View.GONE
             }
             if (task.isImportant) {
                 itemView.background = ContextCompat.getDrawable(itemView.context, R.drawable.important_note_background)
@@ -69,3 +70,4 @@ class TaskAdapter(
         }
     }
 }
+
