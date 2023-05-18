@@ -6,8 +6,12 @@
     <string name="label_add_task_button">Добавить заметку</string>
     <string name="label_no_task">У вас нет задачи</string>
     <string name="label_task_added_toast">Заметка добавлено</string>
-    <string name="label_task_is_empty">Заголовок заметки не может быть пустым!    <string name="label_important_task">Mark as important: </string>
-</string>
+    <string name="label_task_is_empty">Заголовок заметки не может быть пустым! </string>
+
+    <string name="label_select_image">Выберите изображение</string>
+    <string name="label_image_removed">Изображение удалено</string>
+    <string name="label_remove_image">Удалить изображение</string>
+
     <string name="label_cancel">Отмена</string>
     <string name="label_edit_task">Изменить заметку</string>
     <string name="label_update">Обновлятьe</string>
@@ -15,7 +19,7 @@
     <string name="label_task_deleted">Заметка удалена!</string>
     <string name="label_undo">Отменить</string>
     <string name="label_add">Добавлять</string>
-    <string name="label_important_task">Отметить как важное: </string>
+    <string name="label_important_task">Отметить как важное</string>
     <string name="label_important">Важная заметка</string>
 
 </resources>

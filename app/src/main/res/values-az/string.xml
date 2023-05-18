@@ -6,6 +6,9 @@
     <string name="label_description">Qeyd təsviri</string>
     <string name="label_add_task_button">Əlavə et</string>
     <string name="label_no_task">Qeydiniz yoxdur</string>
+    <string name="label_select_image">Şəkil seçin</string>
+    <string name="label_image_removed">Şəkil Silindi</string>
+    <string name="label_remove_image">Şəkli silin</string>
 
     <string name="label_task_added_toast">Qeyd əlavə edildi</string>
     <string name="label_task_is_empty">Qeyd başlığı boş olmamalıdır!</string>
@@ -16,7 +19,7 @@
     <string name="label_task_deleted">Qeyd Silindi!</string>
     <string name="label_undo">Geri al</string>
     <string name="label_add">Əlavə et</string>
-    <string name="label_important_task">Vacib olaraq qeyd edin: </string>
+    <string name="label_important_task">Vacib olaraq qeyd edin</string>
     <string name="label_important">Vacib Qeyd</string>
 
 </resources>

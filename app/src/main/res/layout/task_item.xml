@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_description" />
+        app:layout_constraintTop_toBottomOf="@+id/task_image" />
 
     <ImageView
         android:id="@+id/edit_task_icon"
@@ -78,10 +78,10 @@
     <ImageView
         android:id="@+id/task_image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/importantTask"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
-

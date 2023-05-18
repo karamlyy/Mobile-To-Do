@@ -14,4 +14,8 @@
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="dark_gray">#666666</color>
+
+    <color name="important_note_color">#FFEB3B</color> <!-- Yellow -->
+    <color name="ordinary_note_color">#FFFFFF</color> <!-- White -->
+    <color name="task_border_color">#9E9E9E</color> <!-- Grey -->
 </resources>
