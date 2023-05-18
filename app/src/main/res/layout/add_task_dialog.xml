@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/label_title"
+            android:background="@drawable/task_border"
             android:inputType="textCapSentences"
             android:maxLines="1" />
 
@@ -33,6 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
+            android:background="@drawable/task_border"
+
             android:hint="@string/label_description"
             android:inputType="textMultiLine"
             android:lines="4" />
@@ -41,32 +44,39 @@
 
     <Button
         android:id="@+id/select_image_button"
-        style="?attr/materialButtonOutlinedStyle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/label_select_image"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_input_layout"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_description_input_layout" />
 
     <Button
         android:id="@+id/removeImageButton"
-        style="?attr/materialButtonOutlinedStyle"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Remove Image"
-        app:layout_constraintTop_toBottomOf="@+id/task_description_input_layout"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="@string/label_remove_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_image_button" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/importantCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/task_border"
+        android:padding="10dp"
         android:text="@string/label_important_task"
+
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/select_image_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/removeImageButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
